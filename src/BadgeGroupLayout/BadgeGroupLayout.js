@@ -2,6 +2,7 @@ import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import styles from './BadgeGroupLayout.scss';
 import PropTypes from 'prop-types';
+import map from 'lodash/map';
 
 export default class BadgeGroupLayout extends React.Component {
   static propTypes = {
@@ -15,7 +16,7 @@ export default class BadgeGroupLayout extends React.Component {
   get options() {
     const { options } = this.props;
 
-    return options.map(({id, color, text}) => ({
+    return map(options, ({id, color, text}) => ({
       id,
       value: (
         <div>

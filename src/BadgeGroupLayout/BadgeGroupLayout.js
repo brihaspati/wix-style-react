@@ -1,8 +1,8 @@
 import React from 'react';
 import DropdownLayout from '../DropdownLayout';
-import styles from './BadgeGroupLayout.scss';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
+import {badgeOptionBuilder} from './BadgeOptionBuilder';
 
 export default class BadgeGroupLayout extends React.Component {
   static propTypes = {
@@ -10,31 +10,24 @@ export default class BadgeGroupLayout extends React.Component {
       id: PropTypes.string,
       color: PropTypes.string,
       text: PropTypes.string
-    }))
+    })),
+    selectedId: PropTypes.string
   };
-
   get options() {
-    const { options } = this.props;
-
-    return map(options, ({id, color, text}) => ({
-      id,
-      value: (
-        <div>
-          <div className={styles.marker} style={{backgroundColor: color}}/>
-          <span className={styles.label}>{text}</span>
-        </div>
-      )
-    }));
+    const {options} = this.props;
+    return map(options, badgeOptionBuilder);
   }
 
   render() {
-    const { selectedId } = this.props;
+    const {selectedId} = this.props;
 
     return (
       <div>
-        <DropdownLayout visible
-                        selectedId={selectedId}
-                        options={this.options}/>
+        <DropdownLayout
+          visible
+          selectedId={selectedId}
+          options={this.options}
+          />
       </div>
     );
   }

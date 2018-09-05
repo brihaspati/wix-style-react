@@ -12,6 +12,10 @@
   skin: value(general);
 }
 
+.root {
+  -st-states: skin(string);
+}
+
 .marker {
   width: 20px;
   height: 12px;
@@ -31,10 +35,53 @@
   line-height: 24px;
 }
 
-.root {
-  -st-states: skin(string);
+.root:skin(secondaryText) .marker {
+	background-color: value(secondaryText)
 }
 
-.root:skin(standard) {
-  background-color: value(standard)
+.root:skin(danger) .marker {
+	background-color: value(danger)
+}
+
+.root:skin(standard) .marker {
+	background-color: value(standard)
+}
+
+.root:skin(primaryLightText) .marker {
+	background-color: value(primaryLightText)
+}
+
+.root:skin(success) .marker {
+	background-color: value(success)
+}
+
+.root:skin(warning) .marker {
+	background-color: value(warning)
+}
+
+.root:skin(urgent) .marker {
+	background-color: value(urgent)
+}
+
+.root:skin(general) .marker {
+	background-color: value(general)
+}
+
+.root:skin(neutral) .marker {
+	background-color: value(neutral)
+}
+
+.root:skin(mainMutedHover) .marker {
+	background-color: value(mainMutedHover)
+}
+
+.root:skin(successMutedHover) .marker {
+	background-color: value(successMutedHover)
+}
+
+.root:skin(dangerMutedHover) .marker {
+	background-color: value(dangerMutedHover)
+}
+.root:skin(backgroundSecondary) .marker {
+	background-color: value(backgroundSecondary)
 }

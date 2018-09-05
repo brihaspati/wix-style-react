@@ -1,0 +1,40 @@
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/palette.st.css";
+  -st-named: secondaryText, primaryLightText, danger, success, warning, urgent, general, standard, neutral, mainMutedHover, successMutedHover, dangerMutedHover, backgroundSecondary;
+}
+
+:import {
+  -st-from: "wix-ui-backoffice/dist/src/typography.st.css";
+  -st-named: fontRoman;
+}
+
+:vars {
+  skin: value(general);
+}
+
+.marker {
+  width: 20px;
+  height: 12px;
+  border-radius: 2px;
+  border: solid 2px #ffffff;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: value(skin)
+}
+
+.label {
+  font-family: value(fontRoman);
+  font-size: 14px;
+  margin-left: 6px;
+  vertical-align: middle;
+  line-height: 24px;
+}
+
+.root {
+  -st-states: skin(string);
+}
+
+.root:skin(standard) {
+  background-color: value(standard)
+}

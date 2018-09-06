@@ -14,13 +14,15 @@ export default {
   component: options => <div style={{height: 150}}><BadgeGroupLayout {...options}/></div>,
   componentPath: '../../src/BadgeGroupLayout',
 
-  componentProps: {
+  componentProps: setState => ({
     options,
-    selectedId: '0'
-  },
+    selectedId: '0',
+    onSelect: ({id}) => setState({selectedId: id}),
+    isInContainer: true
+  }),
 
   exampleProps: {
-    selectedId: options.map(({id}) => id),
+    // selectedId: options.map(({id}) => id),
     options: [
       {label: 'With options', value: options}
     ]

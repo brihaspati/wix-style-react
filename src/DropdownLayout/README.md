@@ -25,6 +25,7 @@
 | onMouseEnter | func | - | - | Callback function called whenever the user entered with the mouse to the dropdown layout|
 | onMouseLeave | func | - | - | Callback function called whenever the user exited with the mouse from the dropdown layout|
 | selectedHighlight | bool | true | - | Whether the selected option will be highlighted when dropdown reopened|
+| isInContainer | bool | true | - | Shows container with shadow, rounded borders and margins.
 
 ## Option
 

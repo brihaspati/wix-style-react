@@ -1,5 +1,5 @@
 import React from 'react';
-import BadgeGroupLayout from 'wix-style-react/BadgeGroupLayout';
+import BadgeGroup from 'wix-style-react/BadgeGroup';
 import {SKIN} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 const options = [
   {id: '0', skin: SKIN.danger, text: 'Red'},
@@ -10,17 +10,18 @@ const options = [
 
 export default {
   category: '12. Other',
-  storyName: '12.2 BadgeGroupLayout',
-  component: options => <div style={{height: 150}}><BadgeGroupLayout {...options}/></div>,
-  componentPath: '../../src/BadgeGroupLayout',
+  storyName: '12.2 BadgeGroup',
+  component: BadgeGroup,
+  componentPath: '../../src/BadgeGroup',
 
-  componentProps: {
+  componentProps: setState => ({
     options,
-    selectedId: '0'
-  },
+    selectedId: '0',
+    onSelect: ({id}) => setState({selectedId: id})
+  }),
 
   exampleProps: {
-    selectedId: options.map(({id}) => id),
+    // selectedId: options.map(({id}) => id),
     options: [
       {label: 'With options', value: options}
     ]

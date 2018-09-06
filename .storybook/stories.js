@@ -108,7 +108,7 @@ import '../stories/ColorPicker.story.js'; // 11.5 Color Picker
 
 // 12. Other
 import '../stories/Badge'; // 12.1 Badge
-import '../stories/BadgeGroupLayout/index.story.js'; // 12.2 BadgeGroupLayout
+import '../stories/BadgeGroup/index.story.js'; // 12.2 BadgeGroup
 import '../stories/CounterBadge'; //12.3 CounterBadge
 import '../stories/FullTextView.story.js'; //12.4 FullTextView
 import '../stories/Tag.story.js'; // 12.5 Tag

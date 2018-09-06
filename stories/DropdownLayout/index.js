@@ -22,6 +22,9 @@ import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 import ExampleControlledWithButtons from './ExampleControlledWithButtons';
 import ExampleControlledRawWithButtons from '!raw-loader!./ExampleControlledWithButtons';
 
+import ExampleControlledWithoutContainer from './ExampleControlledWithoutContainer';
+import ExampleControlledWithoutContainerRaw from '!raw-loader!./ExampleControlledWithoutContainer';
+
 import ExampleTheme from './ExampleTheme';
 import ExampleThemeRaw from '!raw-loader!./ExampleTheme';
 
@@ -63,6 +66,10 @@ storiesOf('11. Pickers and Selectors', module)
 
         <CodeExample title="Controlled with buttons" code={ExampleControlledRawWithButtons}>
           <ExampleControlledWithButtons/>
+        </CodeExample>
+
+        <CodeExample title="Without container styles" code={ExampleControlledWithoutContainerRaw}>
+          <ExampleControlledWithoutContainer/>
         </CodeExample>
 
         <div style={{paddingTop: '230px'}}/>

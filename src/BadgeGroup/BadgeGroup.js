@@ -3,10 +3,10 @@ import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import {badgeOptionBuilder} from './BadgeOptionBuilder';
-import styles from './BadgeGroupLayout.scss';
+import styles from './BadgeGroup.scss';
 import noop from 'lodash/noop';
 
-export default class BadgeGroupLayout extends React.Component {
+export default class BadgeGroup extends React.Component {
   static propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
@@ -14,12 +14,10 @@ export default class BadgeGroupLayout extends React.Component {
       text: PropTypes.string
     })),
     selectedId: PropTypes.string,
-    isInContainer: PropTypes.bool,
     onSelect: PropTypes.func,
   };
 
   static defaultProps = {
-    isInContainer: true,
     onSelect: noop
   };
 
@@ -29,7 +27,7 @@ export default class BadgeGroupLayout extends React.Component {
   }
 
   render() {
-    const { selectedId, isInContainer, onSelect } = this.props;
+    const { selectedId, onSelect } = this.props;
 
     return (
       <div className={styles.container}>
@@ -38,7 +36,7 @@ export default class BadgeGroupLayout extends React.Component {
           selectedId={selectedId}
           options={this.options}
           onSelect={onSelect}
-          isInContainer={isInContainer}
+          isInContainer={true}
         />
       </div>
     );

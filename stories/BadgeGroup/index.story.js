@@ -1,5 +1,5 @@
 import BadgeGroup from 'wix-style-react/BadgeGroup';
-import {SKIN} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
+import {SKIN, TYPE, SIZE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
@@ -16,13 +16,13 @@ export default {
   componentProps: setState => ({
     options,
     selectedId: '0',
-    onSelect: ({id}) => setState({selectedId: id})
+    onSelect: ({id}) => setState({selectedId: id}),
+    uppercase: true
   }),
 
   exampleProps: {
     selectedId: options.map(({id}) => id),
-    options: [
-      {label: 'With options', value: options}
-    ]
+    type: Object.keys(TYPE),
+    size: Object.keys(SIZE)
   }
 };

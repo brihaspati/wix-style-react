@@ -2,11 +2,12 @@ import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
-import { badgeGroupItemBuilder } from '../BadgeGroupItemBuilder';
+import {badgeGroupItemBuilder} from '../BadgeGroupItemBuilder';
 import styles from './BadgeGroup.scss';
 import noop from 'lodash/noop';
 import Badge from '../Badge/Badge';
-import { ChevronDown } from 'wix-ui-icons-common';
+import {ChevronDown} from 'wix-ui-icons-common';
+import ReactDOM from 'react-dom';
 
 export default class BadgeGroup extends React.Component {
   static propTypes = {
@@ -51,9 +52,12 @@ export default class BadgeGroup extends React.Component {
     this.setState({visible: !this.state.visible});
   }
 
-  handleSelect({ id: selectedId }) {
-    const selectedBadge = this.props.options.find(({ id }) => id === selectedId);
-    this.setState({ selectedBadge });
+  handleOutsideClick(event) {
+    const ref = ReactDOM.findDOMNode(this.badge);
+    if (!ref.contains(event.target)) {
+      this.setState({visible: false});
+    }
+  }
 
   handleSelect({id: selectedId}) {
     const selectedBadge = this.props.options.find(({id}) => id === selectedId);
@@ -68,12 +72,12 @@ export default class BadgeGroup extends React.Component {
     return (
       <div className={styles.container}>
         <Badge
-          {...{ type, size, uppercase }}
+          ref={badge => this.badge = badge}
           {...{type, size, uppercase}}
           suffixIcon={<ChevronDown/>}
           onClick={() => this.toggleDropdown()}
           skin={this.state.selectedBadge.skin}
-        >
+          >
           {this.state.selectedBadge.text}
         </Badge>
         <div className={styles.dropdown}>
@@ -83,8 +87,8 @@ export default class BadgeGroup extends React.Component {
             options={this.options}
             onSelect={() => this.handleSelect()}
             isInContainer
-            onClickOutside={() => this.setState({ visible: false })}
-          />
+            onClickOutside={e => this.handleOutsideClick(e)}
+            />
         </div>
       </div>
     );

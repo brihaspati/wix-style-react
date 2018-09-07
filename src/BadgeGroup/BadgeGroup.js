@@ -2,7 +2,7 @@ import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
-import { badgeOptionBuilder } from './BadgeOptionBuilder';
+import { badgeGroupItemBuilder } from '../BadgeGroupItemBuilder';
 import styles from './BadgeGroup.scss';
 import noop from 'lodash/noop';
 import Badge from '../Badge/Badge';

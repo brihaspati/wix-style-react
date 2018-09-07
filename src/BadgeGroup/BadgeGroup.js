@@ -30,44 +30,50 @@ export default class BadgeGroup extends React.Component {
     super(props);
     this.state = {
       visible: false,
-      selectedBadge: props.options.find(({ id }) => id === props.selectedId)
+      selectedBadge: props.options.find(({id}) => id === props.selectedId)
     };
   }
 
-  componentWillReceiveProps({ selectedId }) {
+  componentWillReceiveProps({selectedId}) {
     if (this.props.selectedId !== selectedId) {
       this.setState({
-        selectedBadge: this.props.options.find(({ id }) => id === selectedId)
+        selectedBadge: this.props.options.find(({id}) => id === selectedId)
       });
     }
   }
 
   get options() {
-    const { options } = this.props;
-    return map(options, badgeOptionBuilder);
+    const {options} = this.props;
+    return map(options, badgeGroupItemBuilder);
   }
 
   toggleDropdown() {
-    this.setState({ visible: !this.state.visible });
+    this.setState({visible: !this.state.visible});
   }
 
   handleSelect({ id: selectedId }) {
     const selectedBadge = this.props.options.find(({ id }) => id === selectedId);
     this.setState({ selectedBadge });
+
+  handleSelect({id: selectedId}) {
+    const selectedBadge = this.props.options.find(({id}) => id === selectedId);
+    this.setState({selectedBadge});
     this.props.onSelect(selectedBadge);
-    this.setState({ visible: false });
+    this.setState({visible: false});
   }
 
   render() {
-    const { type, size, uppercase } = this.props;
+    const {type, size, uppercase} = this.props;
 
     return (
       <div className={styles.container}>
         <Badge
           {...{ type, size, uppercase }}
+          {...{type, size, uppercase}}
           suffixIcon={<ChevronDown/>}
-          onClick={this.toggleDropdown.bind(this)}
-          skin={this.state.selectedBadge.skin}>
+          onClick={() => this.toggleDropdown()}
+          skin={this.state.selectedBadge.skin}
+        >
           {this.state.selectedBadge.text}
         </Badge>
         <div className={styles.dropdown}>
@@ -75,7 +81,7 @@ export default class BadgeGroup extends React.Component {
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}
             options={this.options}
-            onSelect={this.handleSelect.bind(this)}
+            onSelect={() => this.handleSelect()}
             isInContainer
             onClickOutside={() => this.setState({ visible: false })}
           />

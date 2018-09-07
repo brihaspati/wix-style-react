@@ -2,76 +2,99 @@ import React from 'react';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import badgeGroupDriverFactory from './BadgeGroup.driver';
 import BadgeGroup from './BadgeGroup';
-import {SKIN} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
+import {SKIN, SIZE, TYPE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 
 describe('BadgeGroup', () => {
   const createDriver = createDriverFactory(badgeGroupDriverFactory);
-  let badgeGroupDriver;
+  const initialOptionId = 0;
   const options = Object.values(SKIN).map((skin, id) => ({
     id: id.toString(),
     skin,
     text: skin
   }));
-  createComponent();
 
   function createComponent(props = {}) {
-    badgeGroupDriver = createDriver(<BadgeGroup options={options} selectedId={'0'} onSelect={() => {}} {...props}/>);
+    return createDriver(<BadgeGroup options={options} selectedId={initialOptionId.toString()} onSelect={() => {}} {...props}/>);
   }
+  createComponent();
 
-  it('should successfully render a component', () => {
-    createComponent();
-    expect(badgeGroupDriver.driver.exists()).toBeTruthy();
-    expect(badgeGroupDriver.dropdownLayoutDriver.isShown()).toBeFalsy();
+  it('should have a badge and hidden options by default', () => {
+    const {driver, dropdownLayoutDriver, badgeDriver} = createComponent();
+    expect(driver.exists()).toBeTruthy();
+    expect(badgeDriver.exists()).toBeTruthy();
+    expect(dropdownLayoutDriver.isShown()).toBeFalsy();
   });
 
-  // describe.skip('Badge', () => {
-  //   it('should show history panel with current color selected as previous', () => {
-  //     const onChange = jest.fn();
-  //     const onCancel = jest.fn();
-  //     const onConfirm = jest.fn();
-  //     const value = '#000000';
-  //     createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
-  //     expect(driver.historyPanelExists()).toBeTruthy();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe(value);
-  //     expect(color(driver.historyPreviousColor()).hex()).toBe(value);
-  //   });
-  //
-  //   it('should not update previous color after current color change but not confirm', () => {
-  //     const onChange = jest.fn();
-  //     const onCancel = jest.fn();
-  //     const onConfirm = jest.fn();
-  //     const value = '#00FF00';
-  //     createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
-  //     driver.selectBlackColor();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
-  //     expect(color(driver.historyPreviousColor()).hex()).toBe(value);
-  //   });
-  //
-  //   it('should set previous color to be active color', () => {
-  //     const onChange = jest.fn();
-  //     const onCancel = jest.fn();
-  //     const onConfirm = jest.fn();
-  //     const value = '#00FF00';
-  //     createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
-  //     driver.selectBlackColor();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
-  //     expect(color(driver.historyPreviousColor()).hex()).toBe(value);
-  //     driver.clickOnPreviousColor();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe(value);
-  //   });
-  //
-  //   it('should update previous color after confirm click', () => {
-  //     const onChange = jest.fn();
-  //     const onCancel = jest.fn();
-  //     const onConfirm = jest.fn();
-  //     const value = '#00FF00';
-  //     createComponent({value, onChange, onCancel, onConfirm, showHistory: true});
-  //     driver.selectBlackColor();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
-  //     expect(color(driver.historyPreviousColor()).hex()).toBe(value);
-  //     driver.confirm();
-  //     expect(color(driver.historyCurrentColor()).hex()).toBe('#000000');
-  //     expect(color(driver.historyPreviousColor()).hex()).toBe('#000000');
-  //   });
-  // });
+  it('should show badge with initial selected skin and text', () => {
+    const {badgeDriver} = createComponent();
+    expect(badgeDriver.getSkin()).toBe(options[initialOptionId].skin);
+    expect(badgeDriver.getText()).toBe(options[initialOptionId].text);
+  });
+
+  it('should show badge with correct general props as default', () => {
+    const {badgeDriver} = createComponent();
+    expect(badgeDriver.getType()).toBe(TYPE.solid);
+    expect(badgeDriver.getSize()).toBe(SIZE.medium);
+    expect(badgeDriver.getUppercase()).toBe(true);
+  });
+
+  it('should render badge with a suffix icon', () => {
+    const {badgeDriver} = createComponent();
+    expect(badgeDriver.getSuffixIcon()).toBe.defined;
+  });
+
+  it('should show badge with props given', () => {
+    const {badgeDriver} = createComponent({type: TYPE.outlined, size: SIZE.small, uppercase: false});
+    expect(badgeDriver.getType()).toBe(TYPE.outlined);
+    expect(badgeDriver.getSize()).toBe(SIZE.small);
+    expect(badgeDriver.getUppercase()).toBe(false);
+  });
+
+  it('should show badge selector when badge is clicked', () => {
+    const {dropdownLayoutDriver, badgeDriver} = createComponent();
+    badgeDriver.click();
+    expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+  });
+
+  it('should hide options on selection', () => {
+    const {dropdownLayoutDriver, badgeDriver} = createComponent();
+    badgeDriver.click();
+    dropdownLayoutDriver.clickAtOption(2);
+    expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+  });
+
+  it('should hide options on outside click', () => {
+    const {driver, dropdownLayoutDriver, badgeDriver} = createComponent();
+    badgeDriver.click();
+    expect(dropdownLayoutDriver.isShown()).toBeTruthy();
+    driver.outsideClick();
+    expect(dropdownLayoutDriver.isShown()).toBeFalsy();
+  });
+
+  it('should call onSelect when an option is selected', () => {
+    const onSelect = jest.fn();
+    const selectedIndex = 3;
+    const {dropdownLayoutDriver, badgeDriver} = createComponent({onSelect});
+    badgeDriver.click();
+    dropdownLayoutDriver.clickAtOption(selectedIndex);
+    expect(onSelect).toBeCalledWith(options[selectedIndex]);
+  });
+
+  it('should change badge skin after an option is selected', () => {
+    const {dropdownLayoutDriver, badgeDriver} = createComponent();
+    const selectedIndex = 3;
+
+    badgeDriver.click();
+    dropdownLayoutDriver.clickAtOption(selectedIndex);
+    expect(badgeDriver.getSkin()).toBe(options[selectedIndex].skin);
+  });
+
+  it('should change badge text after an option is selected', () => {
+    const {dropdownLayoutDriver, badgeDriver} = createComponent();
+    const selectedIndex = 3;
+
+    badgeDriver.click();
+    dropdownLayoutDriver.clickAtOption(selectedIndex);
+    expect(badgeDriver.getText()).toBe(options[selectedIndex].text);
+  });
 });

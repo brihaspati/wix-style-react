@@ -89,8 +89,9 @@ export default class BadgeGroup extends React.Component {
             {this.state.selectedBadge.text}
           </Badge>
         </div>
-        <div data-hook="badgeGroup-dropdownLayout" className={styles.dropdown}>
+        <div className={styles.dropdown}>
           <DropdownLayout
+            dataHook="badgeGroup-dropdownLayout"
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}
             options={this.options}

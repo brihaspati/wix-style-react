@@ -31,16 +31,24 @@ export default class BadgeGroup extends React.Component {
     super(props);
     this.state = {
       visible: false,
-      selectedBadge: props.options.find(({id}) => id === props.selectedId)
+      selectedBadge: this.getSelectedOption(props)
     };
   }
 
-  componentWillReceiveProps({selectedId}) {
-    if (this.props.selectedId !== selectedId) {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selectedId !== nextProps.selectedId) {
       this.setState({
-        selectedBadge: this.props.options.find(({id}) => id === selectedId)
+        selectedBadge: this.getSelectedOption(nextProps)
       });
     }
+  }
+
+  getSelectedOption(props) {
+    if (props.options && props.options.length) {
+      return props.options.find(({id}) => id === props.selectedId) || props.options[0];
+    }
+
+    return null;
   }
 
   get options() {
@@ -61,15 +69,14 @@ export default class BadgeGroup extends React.Component {
 
   handleSelect({id: selectedId}) {
     const selectedBadge = this.props.options.find(({id}) => id === selectedId);
-    this.setState({selectedBadge});
+    this.setState({selectedBadge, visible: false});
     this.props.onSelect(selectedBadge);
-    this.setState({visible: false});
   }
 
   render() {
     const {type, size, uppercase} = this.props;
 
-    return (
+    return this.state.selectedBadge ? (
       <div className={styles.container}>
         <Badge
           ref={badge => this.badge = badge}
@@ -85,12 +92,12 @@ export default class BadgeGroup extends React.Component {
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}
             options={this.options}
-            onSelect={() => this.handleSelect()}
+            onSelect={selected => this.handleSelect(selected)}
             isInContainer
             onClickOutside={e => this.handleOutsideClick(e)}
             />
         </div>
       </div>
-    );
+    ) : null;
   }
 }

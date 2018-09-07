@@ -1,4 +1,17 @@
-/* make dropdown layout height responsive */
-.container > div > div {
+
+.container {
   position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  /* make dropdown layout height responsive */
+  & > div > div {
+    position: relative;
+  }
 }

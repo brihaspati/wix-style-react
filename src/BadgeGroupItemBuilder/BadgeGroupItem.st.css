@@ -24,6 +24,10 @@
   background-color: value(skin);
 }
 
+.label {
+  margin: 0 6px;
+}
+
 .root:skin(secondaryText) .marker {
 	background-color: value(secondaryText)
 }
@@ -71,6 +75,19 @@
 .root:skin(dangerMutedHover) .marker {
 	background-color: value(dangerMutedHover)
 }
+
 .root:skin(backgroundSecondary) .marker {
 	background-color: value(backgroundSecondary)
+}
+
+.root:skin(neutralStandard) .marker {
+    background-color: value(mainMutedHover)
+}
+
+.root:skin(neutralSuccess) .marker {
+    background-color: value(successMutedHover)
+}
+
+.root:skin(neutralDanger) .marker {
+    background-color: value(dangerMutedHover)
 }

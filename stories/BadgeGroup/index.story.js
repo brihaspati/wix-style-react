@@ -1,11 +1,11 @@
 import BadgeGroup from 'wix-style-react/BadgeGroup';
 import {SKIN} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
-const options = [
-  {id: '0', skin: SKIN.danger, text: 'Red'},
-  {id: '1', skin: SKIN.standard, text: 'Green'},
-  {id: '2', skin: SKIN.neutral, text: 'Blue'},
-  {id: '3', skin: SKIN.general, text: 'Red'}
-];
+
+const options = Object.values(SKIN).map((skin, id) => ({
+  id: id.toString(),
+  skin,
+  text: skin
+}));
 
 export default {
   category: '12. Other',

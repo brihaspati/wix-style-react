@@ -7,14 +7,16 @@ const badgeOption = props => {
   const {skin, text} = props;
   return (<div {...styles('root', {skin}, props)}>
     <div className={styles.marker}/>
-    <Text
-      size="small"
-      skin="standard"
-      tagName="span"
-      weight="normal"
-      >
-      {text}
-    </Text>
+    <span className={styles.label}>
+      <Text
+        size="small"
+        skin="standard"
+        tagName="span"
+        weight="normal"
+        >
+        {text}
+      </Text>
+    </span>
   </div>);
 };
 

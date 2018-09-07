@@ -78,16 +78,18 @@ export default class BadgeGroup extends React.Component {
 
     return this.state.selectedBadge ? (
       <div className={styles.container}>
-        <Badge
-          ref={badge => this.badge = badge}
-          {...{type, size, uppercase}}
-          suffixIcon={<ChevronDown/>}
-          onClick={() => this.toggleDropdown()}
-          skin={this.state.selectedBadge.skin}
-          >
-          {this.state.selectedBadge.text}
-        </Badge>
-        <div className={styles.dropdown}>
+        <div data-hook="badgeGroup-badge-wrapper">
+          <Badge
+            ref={badge => this.badge = badge}
+            {...{type, size, uppercase}}
+            suffixIcon={<ChevronDown/>}
+            onClick={() => this.toggleDropdown()}
+            skin={this.state.selectedBadge.skin}
+            >
+            {this.state.selectedBadge.text}
+          </Badge>
+        </div>
+        <div data-hook="badgeGroup-dropdownLayout" className={styles.dropdown}>
           <DropdownLayout
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}

@@ -8,11 +8,11 @@ wix-style-react
 |  |__ComponentName
 |  |    index.js                              # entry file for the component
 |  |    ComponentName.js                      # the actual component
-|  |    ComponentName.scss                    # the component stylesheet
+|  |    ComponentName.st.css                  # the component stylesheet
 |  |    ComponentName.spec.js                 # component tests
-|  |    ComponentName.driver.js               # a public driver to abstract common actions
+|  |    ComponentName.driver.js               # jsdom public driver to abstract common actions
 |  |    ComponentName.e2e.js                  # browser testing
-|  |    ComponentName.protractor.driver.js    # a public protractor driver to abstract common actions
+|  |    ComponentName.protractor.driver.js    # protractor public protractor driver to abstract common actions
 |  |    README.md                             # (optional) additional information of the component
 |  |    README.TESTKIT.md                     # documention for the different driver methods
 |__stories

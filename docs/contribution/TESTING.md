@@ -6,7 +6,7 @@
 
 ### Component (Unit) Tests
 1. Tests are running with [`jest`](https://facebook.github.io/jest/) in and `JSDOM` environment.
-1. Test in this API level are ones the require browser-like environment but can still run without any visual rendering. The nature of these tests is testing the behavior of a component and wiring methods. For example: clicking on a component triggers a callback, changing the input value, etc...
+1. Test in this API level are ones that require browser-like environment but can still run without any visual rendering. The nature of these tests is testing the behavior of a component and wiring methods. For example: clicking on a component triggers a callback, changing the input value, etc...
 1. Every component will have the test file next to it with the convention of `ComponentName.spec.js`.
 1. Every component uses and expose a **driver**, to help interacting with the component. Read more about drivers [here](./TEST_DRIVERS.md). The driver naming convention is `ComponentName.driver.js`
 

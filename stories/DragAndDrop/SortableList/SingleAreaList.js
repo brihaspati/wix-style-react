@@ -10,27 +10,34 @@ import styles from './SingleAreaList.scss';
 export default class SingleAreaList extends React.Component {
   constructor() {
     super();
-    this.state = {items: [
-      {
-        id: 'a',
-        text: 'Item 1'
-      },
-      {
-        id: 'b',
-        text: 'Item 2'
-      },
-      {
-        id: 'c',
-        text: 'Item 3'
-      },
-      {
-        id: 'd',
-        text: 'Item 4'
-      }
-    ]};
+    this.state = {
+      items: [
+        {
+          id: 'a',
+          text: 'Item 1'
+        },
+        {
+          id: 'b',
+          text: 'Item 2'
+        },
+        {
+          id: 'c',
+          text: 'Item 3'
+        },
+        {
+          id: 'd',
+          text: 'Item 4'
+        },
+        {
+          id: 'e',
+          text: 'Disabled Item 5',
+          disabled: true
+        }
+      ]
+    };
   }
 
-  handleDrop = ({removedIndex, addedIndex}) => {
+  handleDrop = ({ removedIndex, addedIndex }) => {
     const nextItems = [...this.state.items];
     nextItems.splice(addedIndex, 0, ...nextItems.splice(removedIndex, 1));
     this.setState({
@@ -38,20 +45,26 @@ export default class SingleAreaList extends React.Component {
     });
   };
 
-
-  renderItem = ({isPlaceholder, isPreview, id, connectHandle, previewStyles, item}) => {
-    const classes = classNames(
-      styles.card,
-      {
-        [styles.placeholder]: isPlaceholder,
-        [styles.preview]: isPreview
-      });
+  renderItem = ({
+    isPlaceholder,
+    isPreview,
+    id,
+    connectHandle,
+    previewStyles,
+    item,
+    disabled
+  }) => {
+    const classes = classNames(styles.card, {
+      [styles.placeholder]: isPlaceholder,
+      [styles.preview]: isPreview,
+      [styles.disabled]: disabled
+    });
 
     return (
       <div className={classes} style={previewStyles} data-hook={`item-${id}`}>
         {connectHandle(
           <div className={styles.handle} data-hook={`card-${id}-handle`}>
-            <DragAndDropLarge/>
+            <DragAndDropLarge />
           </div>
         )}
         {item.text}
@@ -68,8 +81,7 @@ export default class SingleAreaList extends React.Component {
         items={this.state.items}
         renderItem={this.renderItem}
         onDrop={this.handleDrop}
-        />
+      />
     );
   }
 }
-

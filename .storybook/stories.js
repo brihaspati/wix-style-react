@@ -48,13 +48,12 @@ import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
 import '../stories/Calendar/index.story'; // 3.13 Calendar
 
 // 4. Selection
-import '../stories/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
+import '../stories/DropdownSnippet/DropdownSnippetStory.js'; // 4.1 Dropdown
 import '../stories/AutoComplete'; // 4.1 + AutoComplete
 import '../stories/AutoCompleteComposite'; // 4.1 + AutoCompleteComposite
 import '../stories/InputWithOptions'; // 4.1 + InputWithOptions
 import '../stories/IconWithOptions'; // 4.1 + IconWithOptions
 import '../stories/ButtonWithOptions'; // 4.1 + ButtonWithOptions
-import '../stories/DropdownComposite'; // 4.1 + DropdownComposite
 import '../stories/MultiSelectCheckbox/index.story.js'; // 4.1 + MultiSelectCheckbox
 import '../stories/Checkbox.story.js'; // 4.2 Checkbox
 import '../stories/RadioGroup.story.js'; // 4.3 RadioGroup
@@ -114,6 +113,7 @@ import '../stories/Tag.story.js'; // 12.5 Tag
 import '../stories/Highlighter.story.js'; // Highlighter
 
 // Components API
+import '../stories/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
 import '../stories/FormField.story.js';
 import '../stories/Layout/index.story.js';
 import '../stories/Layout';
@@ -128,6 +128,9 @@ import '../stories/TPA/FloatingTabs';
 import '../stories/TPA/TextLink';
 import '../stories/TPA/Input';
 import '../stories/TPA/Label';
+
+// Deprecated
+import '../stories/deprecated/DropdownComposite'; // 4.1 + DropdownComposite
 
 // Tests
 import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import DropdownCompositeExample from './DropdownCompositeTemplate';
-import Input from '../../src/Input';
-import Label from '../../src/Label';
-import ToggleSwitch from '../../src/ToggleSwitch';
+import Input from '../../../src/Input';
+import Label from '../../../src/Label';
+import ToggleSwitch from '../../../src/ToggleSwitch';
 
 import styles from './ExampleStandard.scss';
 

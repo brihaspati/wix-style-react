@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import DropdownComposite from '../../src/DropdownComposite';
-import Dropdown from '../../src/Dropdown';
-import Label from '../../src/Label';
+import DropdownComposite from '../../../src/DropdownComposite';
+import Dropdown from '../../../src/Dropdown';
+import Label from '../../../src/Label';
 
 export default class Form extends Component {
 

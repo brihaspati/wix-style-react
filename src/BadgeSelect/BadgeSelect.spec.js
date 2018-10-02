@@ -27,14 +27,14 @@ describe('BadgeSelect', () => {
   it('should show badge with initial selected skin and text', () => {
     const {badgeDriver} = createComponent();
     expect(badgeDriver.getSkin()).toBe(options[initialOptionId].skin);
-    expect(badgeDriver.getText()).toBe(options[initialOptionId].text);
+    expect(badgeDriver.text()).toBe(options[initialOptionId].text);
   });
 
   it('should show badge with correct general props as default', () => {
     const {badgeDriver} = createComponent();
     expect(badgeDriver.getType()).toBe(TYPE.solid);
     expect(badgeDriver.getSize()).toBe(SIZE.medium);
-    expect(badgeDriver.getUppercase()).toBe(true);
+    expect(badgeDriver.isUppercase()).toBe(true);
   });
 
   it('should render badge with a suffix icon', () => {
@@ -46,7 +46,7 @@ describe('BadgeSelect', () => {
     const {badgeDriver} = createComponent({type: TYPE.outlined, size: SIZE.small, uppercase: false});
     expect(badgeDriver.getType()).toBe(TYPE.outlined);
     expect(badgeDriver.getSize()).toBe(SIZE.small);
-    expect(badgeDriver.getUppercase()).toBe(false);
+    expect(badgeDriver.isUppercase()).toBe(false);
   });
 
   it('should show badge selector when badge is clicked', () => {
@@ -94,6 +94,6 @@ describe('BadgeSelect', () => {
 
     badgeDriver.click();
     dropdownLayoutDriver.clickAtOption(selectedIndex);
-    expect(badgeDriver.getText()).toBe(options[selectedIndex].text);
+    expect(badgeDriver.text()).toBe(options[selectedIndex].text);
   });
 });

@@ -20,11 +20,13 @@ export default class BadgeSelect extends React.Component {
     onSelect: PropTypes.func,
     size: PropTypes.string,
     type: PropTypes.string,
-    uppercase: PropTypes.bool
+    uppercase: PropTypes.bool,
+    dataHook: PropTypes.string
   };
 
   static defaultProps = {
-    onSelect: noop
+    onSelect: noop,
+    dataHook: ''
   };
 
   constructor(props) {
@@ -74,10 +76,10 @@ export default class BadgeSelect extends React.Component {
   }
 
   render() {
-    const {type, size, uppercase} = this.props;
+    const {type, size, uppercase, dataHook} = this.props;
 
     return this.state.selectedBadge ? (
-      <div className={styles.container}>
+      <div className={styles.container} data-hook={dataHook}>
         <div data-hook="badgeSelect-badge-wrapper">
           <Badge
             ref={badge => this.badge = badge}

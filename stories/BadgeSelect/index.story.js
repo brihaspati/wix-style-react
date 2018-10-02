@@ -1,5 +1,6 @@
 import BadgeSelect from 'wix-style-react/BadgeSelect';
 import {SKIN, TYPE, SIZE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
+import {storySettings} from './storySettings';
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
@@ -8,12 +9,14 @@ const options = Object.values(SKIN).map((skin, id) => ({
 }));
 
 export default {
-  category: '12. Other',
-  storyName: '12.2 BadgeSelect',
+  category: storySettings.kind,
+  storyName: storySettings.storyName,
+
   component: BadgeSelect,
   componentPath: '../../src/BadgeSelect',
 
   componentProps: setState => ({
+    dataHook: storySettings.dataHook,
     options,
     selectedId: '0',
     onSelect: ({id}) => setState({selectedId: id}),

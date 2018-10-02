@@ -129,9 +129,6 @@ import '../stories/TPA/TextLink';
 import '../stories/TPA/Input';
 import '../stories/TPA/Label';
 
-// Deprecated
-import '../stories/deprecated/DropdownComposite'; // 4.1 + DropdownComposite
-
 // Tests
 import '../stories/Page/PageTestStories.js'; // Tests/2.5 + Page/
 import '../stories/PageHeader/PageHeaderTestStories.js'; // Tests/2.5 + PageHeader/

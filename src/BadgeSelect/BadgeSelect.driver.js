@@ -3,9 +3,9 @@ import dropdownLayoutDriverFactory from '../DropdownLayout/DropdownLayout.driver
 import {badgeDriverFactory} from 'wix-ui-backoffice/dist/src/components/Badge/Badge.driver';
 import ReactDOM from 'react-dom';
 
-const badgeGroupDriverFactory = ({element, wrapper, component, eventTrigger}) => {
-  const badgeWrapper = element.querySelector('[data-hook=badgeGroup-badge-wrapper]');
-  const dropdownLayout = element.querySelector('[data-hook=badgeGroup-dropdownLayout]');
+const badgeSelectDriverFactory = ({element, wrapper, component, eventTrigger}) => {
+  const badgeWrapper = element.querySelector('[data-hook=badgeSelect-badge-wrapper]');
+  const dropdownLayout = element.querySelector('[data-hook=badgeSelect-dropdownLayout]');
   const badgeDriver = badgeDriverFactory({element: badgeWrapper.childNodes[0], wrapper: badgeWrapper, eventTrigger});
   const dropdownLayoutDriver = dropdownLayoutDriverFactory({element: dropdownLayout, wrapper});
 
@@ -21,4 +21,4 @@ const badgeGroupDriverFactory = ({element, wrapper, component, eventTrigger}) =>
   return {driver, badgeDriver, dropdownLayoutDriver};
 };
 
-export default badgeGroupDriverFactory;
+export default badgeSelectDriverFactory;

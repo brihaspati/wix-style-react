@@ -2,14 +2,14 @@ import React from 'react';
 import DropdownLayout from '../DropdownLayout';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
-import {badgeGroupItemBuilder} from '../BadgeGroupItemBuilder';
-import styles from './BadgeGroup.scss';
+import {badgeSelectItemBuilder} from '../BadgeSelectItemBuilder';
+import styles from './BadgeSelect.scss';
 import noop from 'lodash/noop';
 import Badge from '../Badge/Badge';
 import {ChevronDown} from 'wix-ui-icons-common';
 import ReactDOM from 'react-dom';
 
-export default class BadgeGroup extends React.Component {
+export default class BadgeSelect extends React.Component {
   static propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
@@ -53,7 +53,7 @@ export default class BadgeGroup extends React.Component {
 
   get options() {
     const {options} = this.props;
-    return map(options, badgeGroupItemBuilder);
+    return map(options, badgeSelectItemBuilder);
   }
 
   toggleDropdown() {
@@ -78,7 +78,7 @@ export default class BadgeGroup extends React.Component {
 
     return this.state.selectedBadge ? (
       <div className={styles.container}>
-        <div data-hook="badgeGroup-badge-wrapper">
+        <div data-hook="badgeSelect-badge-wrapper">
           <Badge
             ref={badge => this.badge = badge}
             {...{type, size, uppercase}}
@@ -91,7 +91,7 @@ export default class BadgeGroup extends React.Component {
         </div>
         <div className={styles.dropdown}>
           <DropdownLayout
-            dataHook="badgeGroup-dropdownLayout"
+            dataHook="badgeSelect-dropdownLayout"
             visible={this.state.visible}
             selectedId={this.state.selectedBadge.id}
             options={this.options}

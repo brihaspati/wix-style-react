@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './BadgeGroupItem.st.css';
+import styles from './BadgeSelectItem.st.css';
 import PropTypes from 'prop-types';
 import Text from '../Text/Text';
 
@@ -26,7 +26,7 @@ badgeOption.propTypes = {
   skin: PropTypes.string.isRequired
 };
 
-export const badgeGroupItemBuilder = ({id, text, skin}) => ({
+export const badgeSelectItemBuilder = ({id, text, skin}) => ({
   id,
   value: badgeOption({text, skin})
 });

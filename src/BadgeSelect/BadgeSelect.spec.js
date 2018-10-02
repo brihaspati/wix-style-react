@@ -1,11 +1,11 @@
 import React from 'react';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
-import badgeGroupDriverFactory from './BadgeGroup.driver';
-import BadgeGroup from './BadgeGroup';
+import badgeSelectDriverFactory from './BadgeSelect.driver';
+import BadgeSelect from './BadgeSelect';
 import {SKIN, SIZE, TYPE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 
-describe('BadgeGroup', () => {
-  const createDriver = createDriverFactory(badgeGroupDriverFactory);
+describe('BadgeSelect', () => {
+  const createDriver = createDriverFactory(badgeSelectDriverFactory);
   const initialOptionId = 0;
   const options = Object.values(SKIN).map((skin, id) => ({
     id: id.toString(),
@@ -14,7 +14,7 @@ describe('BadgeGroup', () => {
   }));
 
   function createComponent(props = {}) {
-    return createDriver(<BadgeGroup options={options} selectedId={initialOptionId.toString()} onSelect={() => {}} {...props}/>);
+    return createDriver(<BadgeSelect options={options} selectedId={initialOptionId.toString()} onSelect={() => {}} {...props}/>);
   }
 
   it('should have a badge and hidden options by default', () => {

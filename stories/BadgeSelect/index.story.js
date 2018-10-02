@@ -1,4 +1,4 @@
-import BadgeGroup from 'wix-style-react/BadgeGroup';
+import BadgeSelect from 'wix-style-react/BadgeSelect';
 import {SKIN, TYPE, SIZE} from 'wix-ui-backoffice/dist/src/components/Badge/constants';
 
 const options = Object.values(SKIN).map((skin, id) => ({
@@ -9,9 +9,9 @@ const options = Object.values(SKIN).map((skin, id) => ({
 
 export default {
   category: '12. Other',
-  storyName: '12.2 BadgeGroup',
-  component: BadgeGroup,
-  componentPath: '../../src/BadgeGroup',
+  storyName: '12.2 BadgeSelect',
+  component: BadgeSelect,
+  componentPath: '../../src/BadgeSelect',
 
   componentProps: setState => ({
     options,

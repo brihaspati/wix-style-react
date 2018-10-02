@@ -48,7 +48,7 @@ import '../stories/GoogleAddressInput'; // 3.11 GoogleAddressInput
 import '../stories/Calendar/index.story'; // 3.13 Calendar
 
 // 4. Selection
-import '../stories/DropdownSnippet/DropdownSnippetStory.js'; // 4.1 Dropdown
+import '../stories/Dropdown/DropdownStory.js'; // 4.1 Dropdown
 import '../stories/AutoComplete'; // 4.1 + AutoComplete
 import '../stories/AutoCompleteComposite'; // 4.1 + AutoCompleteComposite
 import '../stories/InputWithOptions'; // 4.1 + InputWithOptions
@@ -113,7 +113,7 @@ import '../stories/Tag.story.js'; // 12.5 Tag
 import '../stories/Highlighter.story.js'; // Highlighter
 
 // Components API
-import '../stories/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
+import '../stories/components/Dropdown/Dropdown.story.js'; // 4.1 Dropdown
 import '../stories/FormField.story.js';
 import '../stories/Layout/index.story.js';
 import '../stories/Layout';

@@ -13,7 +13,7 @@ storiesOf('4. Selection', module)
     <div>
       <Markdown
         source={`
-# 4.1 Dropdown (Snippet)
+# 4.1 Dropdown
 
 ## Included components
 `}

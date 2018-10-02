@@ -10,8 +10,11 @@ const badgeSelectDriverFactory = ({element, wrapper, component, eventTrigger}) =
   const dropdownLayoutDriver = dropdownLayoutDriverFactory({element: dropdownLayout, wrapper});
 
   const driver = {
+    /** Returns 'true' wether the element exists */
     exists: () => !!element,
+    /** Performs a click outside the component */
     outsideClick: () => document.body.dispatchEvent(new Event('mouseup', {cancelable: true})),
+    /** Set the props for the component */
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);

@@ -8,7 +8,9 @@ import TooltipForEyesOnly from './TooltipForEyesOnly';
 export class Template extends Component {
 
   static propTypes = {
+    padding: PropTypes.any,
     onChange: PropTypes.func.isRequired,
+    popover: PropTypes.bool,
     theme: Tooltip.propTypes.theme,
     placement: Tooltip.propTypes.placement,
     tooltipContent: Tooltip.propTypes.content,
@@ -21,7 +23,8 @@ export class Template extends Component {
     onHide: Tooltip.propTypes.onHide,
     shouldUpdatePosition: Tooltip.propTypes.shouldUpdatePosition,
     showImmediately: Tooltip.propTypes.showImmediately,
-    moveBy: Tooltip.propTypes.moveBy
+    moveBy: Tooltip.propTypes.moveBy,
+    showArrow: Tooltip.propTypes.showArrow
   };
 
   componentDidUpdate(props) {
@@ -41,6 +44,8 @@ export class Template extends Component {
   getComponent() {
     return (
       <Tooltip
+        padding={this.props.padding}
+        popover={this.props.popover || this.props.type === 'popover'}
         placement={this.props.placement}
         alignment="center"
         content={this.props.tooltipContent}
@@ -55,6 +60,7 @@ export class Template extends Component {
         shouldUpdatePosition={this.props.shouldUpdatePosition}
         showImmediately={this.props.showImmediately}
         moveBy={this.props.moveBy}
+        showArrow={this.props.showArrow}
         >
         {this.getTooltipTarget()}
       </Tooltip>

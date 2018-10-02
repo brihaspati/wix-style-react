@@ -29,6 +29,9 @@ export const tpaInputTestkitFactory = protractorTestkitFactoryCreator(tpaInputDr
 import pageDriverFactory from '../src/Page/Page.protractor.driver';
 export const pageTestkitFactory = protractorTestkitFactoryCreator(pageDriverFactory);
 
+import pageHeaderDriverFactory from '../src/PageHeader/PageHeader.protractor.driver';
+export const pageHeaderTestkitFactory = protractorTestkitFactoryCreator(pageHeaderDriverFactory);
+
 import dataTableDriverFactory from '../src/DataTable/DataTable.protractor.driver';
 export const dataTableTestkitFactory = protractorTestkitFactoryCreator(dataTableDriverFactory);
 
@@ -157,6 +160,9 @@ export const headingTestkitFactory = protractorTestkitFactoryCreator(headingDriv
 
 import sectionHelperDriverFactory from '../src/SectionHelper/SectionHelper.protractor.driver';
 export const sectionHelperTestkitFactory = protractorTestkitFactoryCreator(sectionHelperDriverFactory);
+
+import tagDriverFactory from '../src/Tag/Tag.protractor.driver';
+export const tagTestkitFactory = protractorTestkitFactoryCreator(tagDriverFactory);
 
 // wix-ui-backoffice proxy
 

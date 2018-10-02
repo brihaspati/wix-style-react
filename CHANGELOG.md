@@ -11,17 +11,100 @@ Types of changes:
 1. **Fixed** for any bug fixes.
 1. **Security** in case of vulnerabilities.
 1. **Breaking** for breaking changes
+1. **Docs** for documentation changes
 
-## Next
+## Next - 2018-10-??
+
+### Fixed
+- `<MultiSelectCheckbox/>` - Fix `onSelect` called twice [#2267](https://github.com/wix/wix-style-react/pull/2267)
+- `<InputWithTags/>` - add missing `<Tag>` dataHook [#2289](https://github.com/wix/wix-style-react/pull/2289)
 
 ### Added
+- `<PopoverMenuItem/>`, `<TableActionCell/>` - support disabled menu items [#2235](https://github.com/wix/wix-style-react/pull/2235)
 
+## 5.4.0 - 2018-10-02
+
+### Added
+- `<MultiSelect/>` - support reorderable tags (d&d) [#2233](https://github.com/wix/wix-style-react/pull/2233)
+- `<SortableList/>` **WIP** - a reusable drag and drop list component
+
+### Fixed
+- `<Tooltip/>` and `<Search/>` - refactor old refs usage [#2269](https://github.com/wix/wix-style-react/pull/2269)
+- `<InputArea/>`, `<Input/>` and `<RichTextArea/>` - Error icon size margins are incorrect [#2183](https://github.com/wix/wix-style-react/pull/2183)
+
+
+### Changed
+- `<Tag/>` - align to new definitions [#2203](https://github.com/wix/wix-style-react/pull/2203)
+
+### Deprecated
+- `<Tag/>` - internal margins were removed as they belong to `tagsInput`. Backward compatible using the `useOldMargins` flag
+
+## 5.3.4 - 2018-09-27
+
+### Fixed
+- `<Tooltip/>` remove redundant `console.log()` calls [#2273](https://github.com/wix/wix-style-react/pull/2273)
+
+## 5.3.3 - 2018-09-26
+
+### Fixed
+- `<Tags/>` - input box should not have hover color after being focused [#2264](https://github.com/wix/wix-style-react/pull/2264)
+- `<Calendar/>` - remove shadow and border-radius from component [#2205](https://github.com/wix/wix-style-react/pull/2205)
+- `<Tooltip/>` - add popover prop [#2205](https://github.com/wix/wix-style-react/pull/2205)
+- `<Table/>` - fix broken `<TableToolbar/>` docs and `<TableActionCell/>` RTL [#2224](https://github.com/wix/wix-style-react/pull/2224)
+- `<SideMenu/>` - support `dataHook` prop [#2256](https://github.com/wix/wix-style-react/pull/2256)
+- Polyfills - fix `raf` not setting all methods on the global variable [#2258](https://github.com/wix/wix-style-react/pull/2258)
+- `Tooltip` - remove `stopPropagation` from `onClick` as it breaks some use cases [#2260](https://github.com/wix/wix-style-react/pull/2260)
+- `<InputWithOptions/>` - fix `onSelect` to be called also when re-selecting same option [#2265](https://github.com/wix/wix-style-react/pull/2265/files)
+
+## 5.3.2 - 2018-09-20
+
+### Fixed
+- `typography.scss` - Resolve bug with typography import(related to case-sensetive machines) [#2255](https://github.com/wix/wix-style-react/pull/2255)
+
+## 5.3.1 - 2018-09-18
+
+### Fixed
+- `<TableActionCell>` - Fix bad css syntax [#2243](https://github.com/wix/wix-style-react/pull/2243)
+- `<DropdownLayout/>`, `<InputArea/>` - new typography Fixes [#2232](https://github.com/wix/wix-style-react/pull/2232)
+- `<Text>` - support `dataHook` for ellipsed text [#2246](https://github.com/wix/wix-style-react/pull/2246)
+- `<MultiSelect>` - fix testkit to return correct number of tags [#2248](https://github.com/wix/wix-style-react/pull/2248)
+
+## 5.3.0 - 2018-09-16
+
+### Added
+- `<SideMenu/>` - add `className` prop to the `Header` component [#2223](https://github.com/wix/wix-style-react/pull/2223)
+- `<TableToolbar/>` - add RTL support [#2222](https://github.com/wix/wix-style-react/pull/2222)
+- `<Page/>` - add support to Table infinite scroll inside a Page [#2230](https://github.com/wix/wix-style-react/pull/2230)
+
+### Fixed
+- `<SectionHelper/>` - add box-sizing to not break styles [#2202](https://github.com/wix/wix-style-react/pull/2202)
+- `<Tooltip/>` - fix tooltip jumping [#2225](https://github.com/wix/wix-style-react/pull/2225)
+- `<ButtonLayout/>` - remove border from button focus [#2234](https://github.com/wix/wix-style-react/pull/2234)
+
+### Changed
+- `<ButtonLayout/>` - update typography [#2198](https://github.com/wix/wix-style-react/pull/2198)
+- Technical - remove `PureComponent` from non-pure components [#2160](https://github.com/wix/wix-style-react/pull/2160)
+- `<SortableList/>` - improve performance of nested d&d [#2227](https://github.com/wix/wix-style-react/pull/2227)
+
+### Removed
+- Remove dead code `src/Backoffice/ButtonLayout` (was never in use) [#2231](https://github.com/wix/wix-style-react/pull/2231)
+
+### Docs
+- `<Badge/>` - migrate story to autodocs [#2221](https://github.com/wix/wix-style-react/pull/2221)
+- Update Contriubtion guide [#2220](https://github.com/wix/wix-style-react/pull/2220)
+
+## 5.2.0 - 2018-09-06
+
+### Added
 - `<TableActionCell/>` - added a new component [#2031](https://github.com/wix/wix-style-react/pull/2031)
+- `<Tooltip/>` -  added a new `showArrow` prop [#2200](https://github.com/wix/wix-style-react/pull/2200)
 
-### Changes
+### Changed
+- `<SideMenuDrill/>` - add ellipsis, vertically center arrow [#2185](https://github.com/wix/wix-style-react/pull/2185)
+- `<DropdownLayout/>` - change the divider's data-hook to `dropdown-divider` [#2159](https://github.com/wix/wix-style-react/pull/2159)
 
-- `<SideMenuDrill/>` - Add ellipsis, vertically center arrow [#2185](https://github.com/wix/wix-style-react/pull/2185)
-- `<DropdownLayout/>` - change the divider's data-hook to [#2159](https://github.com/wix/wix-style-react/pull/2159)
+### Fixed
+- `<Calendar/>` - Do not fail when missing `value` or `onClose` prop [2214](https://github.com/wix/wix-style-react/pull/2214)
 
 ## 5.1.0 - 2018-09-04
 ### Added
@@ -42,10 +125,10 @@ Types of changes:
 ## 5.0.0 - 2018-08-29
 ### Breaking
 
-[Migration guide](https://github.com/wix/wix-style-react/blob/master/docs/migration/v4-v5.md)
+[Migration guide](./docs/migration/v4-v5.md)
 
 - `<Checkbox/>` - remove prop `active`(use `checked` instead) and value `large`(use `medium` instead) for prop `size`
-- `<Icons/>` - remove old icons in favor of [new icons](https://github.com/wix/wix-style-react/blob/master/docs/NEW_ICONS_MIGRATION.md)
+- `<Icons/>` - remove old icons in favor of [new icons](./docs/migration/NEW_ICONS_MIGRATION.md)
 - `<Button/>` - remove prop `withNewIcons` and make it behavior default
 - `<DataTable/>` - new styles
 - `<Heading/>` - new typography
@@ -198,7 +281,7 @@ Types of changes:
 ### Added
 -  `<Button/>`- support new icons using the `withNewIcons` prop [#1960](https://github.com/wix/wix-style-react/pull/1960)
 -  `<FullTextView/>`- the new component that can show tooltip in ellipsis state [#2000](https://github.com/wix/wix-style-react/pull/2000)
-- **New Icons** - changed all icons assets to new icons. See the [migration guide](https://github.com/wix/wix-style-react/blob/master/docs/NEW_ICONS_MIGRATION.md) and script. The new icons can be found [here](https://wix-wix-style-react.surge.sh/?selectedKind=1.%20Foundation&selectedStory=1.4%20Icons&full=0&addons=0&stories=1&panelRight=0) and deprecated icons [here](https://wix-wix-style-react.surge.sh/?selectedKind=1.%20Foundation&selectedStory=1.4%20Icons%20-%20deprecated&full=0&addons=0&stories=1&panelRight=0)
+- **New Icons** - changed all icons assets to new icons. See the [migration guide](./docs/NEW_ICONS_MIGRATION.md) and script. The new icons can be found [here](https://wix-wix-style-react.surge.sh/?selectedKind=1.%20Foundation&selectedStory=1.4%20Icons&full=0&addons=0&stories=1&panelRight=0) and deprecated icons [here](https://wix-wix-style-react.surge.sh/?selectedKind=1.%20Foundation&selectedStory=1.4%20Icons%20-%20deprecated&full=0&addons=0&stories=1&panelRight=0)
 
 ### Changed
 - `<Input/>` - migrate to new icons [#1981](https://github.com/wix/wix-style-react/pull/1981)

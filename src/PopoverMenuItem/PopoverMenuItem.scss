@@ -17,11 +17,12 @@
   margin: 0;
   background: none;
   border: none;
-  cursor: pointer;
   font: inherit;
   outline: none;
 
-  &:hover {
+  &:not(:disabled):hover {
+    cursor: pointer;
+
     span,
     svg {
       color: $B10;
@@ -50,5 +51,18 @@
 
   .icon {
     margin-top: 4px;
+  }
+}
+
+:global(.rtl) {
+  .icon {
+    margin-left: 6px;
+    margin-right: 0;
+  }
+
+  .text {
+    margin-left: 0;
+    margin-right: 6px;
+    text-align: right;
   }
 }

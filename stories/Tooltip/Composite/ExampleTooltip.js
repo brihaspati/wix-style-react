@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,13 +17,15 @@ class ExampleTooltip extends Component {
     text: 'Tooltip appears on hover',
     size: 'normal',
     maxWidth: '',
+    popover: false,
     onShow: () => console.log('onShow triggered'),
     onHide: () => console.log('onHide triggered'),
     onShowText: 'onShow triggered',
     onHideText: 'onHide triggered',
     moveBy: {x: 0, y: 0},
     shouldUpdatePosition: false,
-    showImmediately: false
+    showImmediately: false,
+    showArrow: true
   };
 
   render() {
@@ -123,6 +126,26 @@ class ExampleTooltip extends Component {
           </div>
 
           <div className={styles.option}>
+            <Label>Show Arrow</Label>
+            <div className={styles.flex}>
+              <ToggleSwitch
+                checked={this.state.showArrow}
+                onChange={() => this.setState({showArrow: !this.state.showArrow})}
+                />
+            </div>
+          </div>
+
+          <div className={styles.option}>
+            <Label>popover</Label>
+            <div className={styles.flex}>
+              <ToggleSwitch
+                checked={this.state.popover}
+                onChange={() => this.setState({popover: !this.state.popover})}
+                />
+            </div>
+          </div>
+
+          <div className={styles.option}>
             <Label>Move By</Label>
             <div className={styles.flex}>
               <Label>x
@@ -153,12 +176,14 @@ class ExampleTooltip extends Component {
               type="tooltip"
               onChange={this.props.onChange}
               size={this.state.size}
+              popover={this.state.popover}
               maxWidth={this.state.maxWidth}
               onShow={() => console.log(this.state.onShowText)}
               onHide={() => console.log(this.state.onHideText)}
               shouldUpdatePosition={this.state.shouldUpdatePosition}
               showImmediately={this.state.showImmediately}
               moveBy={this.state.moveBy}
+              showArrow={this.state.showArrow}
               />
           </div>
         </div>

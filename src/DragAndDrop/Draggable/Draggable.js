@@ -1,6 +1,7 @@
 import React from 'react';
-import WixComponent from '../../BaseComponents/WixComponent';
 import PropTypes from 'prop-types';
+
+import WixComponent from '../../BaseComponents/WixComponent';
 import DraggableSource from './components/DraggableSource';
 import DraggableTarget from './components/DraggableTarget';
 
@@ -15,8 +16,6 @@ export class Draggable extends WixComponent {
 }
 
 Draggable.propTypes = {
-  /** a function to render each item in the list */
-  render: PropTypes.func.isRequired,
   /** decide whether to render a handle using `connectHandle` (see below) */
   withHandle: PropTypes.bool,
   /** uniq id of container that contain current draggable item */
@@ -36,7 +35,11 @@ Draggable.propTypes = {
   /** callback when item was dropped in a new location */
   onDrop: PropTypes.func,
   /** callback when item is hovered*/
-  onHover: PropTypes.func
+  onHover: PropTypes.func,
+  /** callback for drag start */
+  onDragStart: PropTypes.func,
+  /** callback for drag end */
+  onDragEnd: PropTypes.func
 };
 
 export default Draggable;

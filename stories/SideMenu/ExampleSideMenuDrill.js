@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import SideMenuDrill from 'wix-style-react/SideMenuDrill';
 import SideMenu from 'wix-style-react/SideMenu';
@@ -175,7 +176,7 @@ class ExampleSideMenuDrill extends React.Component {
     return (
       <div style={{width: 220, height: 700, display: 'flex'}}>
         <div style={{display: 'flex', flexGrow: 1}}>
-          <SideMenuDrill inFlex stickyFooter={this.renderFooter()}>
+          <SideMenuDrill inFlex stickyFooter={this.renderFooter()} dataHook="side-menu">
             {this.renderHeader()}
             {this.renderNavigation(items)}
             <SideMenu.Promotion>

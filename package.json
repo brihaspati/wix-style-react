@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "5.1.0",
+  "version": "5.4.0",
   "main": "./dist/src/index.js",
   "files": [
     "dist",
@@ -25,7 +25,7 @@
     "pretest:e2e": "./scripts/ensure-dist.sh",
     "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
-    "copy-public-styles": "cp src/mixins.scss mixins.scss && cp src/colors.scss colors.scss",
+    "copy-public-styles": "cp src/*.scss .",
     "build": "npm run lint && npm run proxy-wix-ui-icons && npm run copy-public-styles && yoshi build && build-storybook && npm run export-components",
     "pr-postbuild": "npx teamcity-surge-autorelease@^1.0.0 --dist=storybook-static",
     "storybook": "start-storybook -p 6006",
@@ -86,6 +86,7 @@
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^1.0.0",
     "protractor-browser-logs": "^1.0.351",
+    "query-string": "^6.1.0",
     "react": "^15.5.4",
     "react-dnd-test-backend": "^5.0.1",
     "react-docgen": "^2.15.0",
@@ -134,14 +135,15 @@
     "react-jss": "^8.0.0",
     "react-modal": "^3.3.2",
     "react-motion": "^0.4.7",
+    "react-portal": "^4.1.5",
     "react-remarkable": "^1.1.1",
     "react-transition-group": "^2.2.1",
     "slate": "^0.20.3",
     "wix-animations": "^1.0.141",
     "wix-eventually": "^2.2.0",
     "wix-ui-backoffice": "^1.0.299",
-    "wix-ui-icons-common": "2.0.9",
-    "wix-ui-test-utils": "^1.0.0"
+    "wix-ui-icons-common": "^2.0.9",
+    "wix-ui-test-utils": "^1.0.115"
   },
   "jest": {
     "setupFiles": [
@@ -211,7 +213,8 @@
         {
           "SwitchCase": 1
         }
-      ]
+      ],
+      "no-console": "error"
     }
   }
 }

@@ -101,7 +101,7 @@ export default class PageHeader extends WixComponent {
                   </Button>
                 </div>)
             }
-            <div>
+            <div className={s.titleColumn}>
               {
                 title && animateComponent(!minimized, !breadcrumbsExists,
                   <div className={classNames(s.title, {[s.minimized]: minimized})} data-hook="page-header-title">

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Portal} from 'react-portal';
 import PropTypes from 'prop-types';
 import {DragLayer} from 'react-dnd';
 
@@ -12,55 +13,75 @@ const layerStyles = {
   top: 0
 };
 
-const dragLayerStyle = ({initialOffset, currentOffset}) => {
-  if (!initialOffset || !currentOffset) {
-    return {
-      display: 'none'
-    };
+let dragPreviewRef = null;
+
+const onOffsetChange = monitor => {
+  if (!dragPreviewRef) {
+    return;
   }
 
-  const transform = `translate(${currentOffset.x}px, ${currentOffset.y}px)`;
-  return {
-    ...layerStyles,
-    transform,
-    WebkitTransform: transform
+  const offset = monitor.getSourceClientOffset() || monitor.getInitialClientOffset();
+  if (!offset) {
+    return;
+  }
+
+  const transform = `translate(${offset.x}px, ${offset.y}px)`;
+  dragPreviewRef.style.transform = transform;
+  dragPreviewRef.style['-webkit-transform'] = transform;
+};
+
+class CustomDragLayer extends React.Component {
+  shouldRenderLayer = (props = this.props) => {
+    const {id, item, itemType, draggedType, isDragging} = props;
+    return isDragging && id === item.id && itemType === draggedType;
   };
-};
 
-const CustomDragLayer = ({
-  item,
-  itemType,
-  draggedType,
-  isDragging,
-  renderPreview,
-  id,
-  initialOffset,
-  currentOffset
-}) => {
-  const shouldRenderLayer = isDragging && id === item.id && itemType === draggedType;
-  if (!shouldRenderLayer) {
-    return null;
+  renderPreview = () => {
+    const {offsetOfHandle} = this.props;
+    const styles = Object.assign({}, layerStyles, {left: -offsetOfHandle.x, top: -offsetOfHandle.y});
+    return (
+      <div
+        style={styles}
+        ref={node => dragPreviewRef = node}
+        >
+        {this.props.renderPreview({})}
+      </div>
+    );
   }
-  const previewStyles = dragLayerStyle({initialOffset, currentOffset});
 
-  return <div>{renderPreview({previewStyles})}</div>;
-};
+  renderPreviewInPortal = () => {
+    return (
+      <Portal>
+        {this.renderPreview()}
+      </Portal>
+    );
+  }
+
+  render() {
+    if (!this.shouldRenderLayer()) {
+      return null;
+    }
+    return this.props.usePortal ? this.renderPreviewInPortal() : this.renderPreview();
+  }
+}
 
 CustomDragLayer.propTypes = {
+  offsetOfHandle: PropTypes.object,
   item: PropTypes.object,
   itemType: PropTypes.string,
   draggedType: PropTypes.string,
   isDragging: PropTypes.bool,
   renderPreview: PropTypes.func,
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  initialOffset: PropTypes.number,
-  currentOffset: PropTypes.number
+  usePortal: PropTypes.bool,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-export default DragLayer(monitor => ({
-  item: monitor.getItem(),
-  itemType: monitor.getItemType(),
-  initialOffset: monitor.getInitialSourceClientOffset(),
-  currentOffset: monitor.getSourceClientOffset(),
-  isDragging: monitor.isDragging()
-}))(CustomDragLayer);
+export default DragLayer((monitor, props) => {
+  onOffsetChange(monitor);
+  return {
+    offsetOfHandle: props.offsetOfHandle,
+    item: monitor.getItem(),
+    itemType: monitor.getItemType(),
+    isDragging: monitor.isDragging()
+  };
+})(CustomDragLayer);

@@ -16,7 +16,6 @@ describe('BadgeGroup', () => {
   function createComponent(props = {}) {
     return createDriver(<BadgeGroup options={options} selectedId={initialOptionId.toString()} onSelect={() => {}} {...props}/>);
   }
-  createComponent();
 
   it('should have a badge and hidden options by default', () => {
     const {driver, dropdownLayoutDriver, badgeDriver} = createComponent();

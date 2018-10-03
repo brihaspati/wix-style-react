@@ -9,11 +9,11 @@ wix-style-react
 |  |__ComponentName
 |  |    index.js                              # entry file for the component
 |  |    ComponentName.js                      # the actual component
-|  |    ComponentName.st.css                  # the component stylesheet
+|  |    ComponentName.scss                  # the component stylesheet
 |  |    ComponentName.spec.js                 # component tests
-|  |    ComponentName.driver.js               # jsdom public driver to abstract common actions
+|  |    ComponentName.driver.js               # vanilla js public driver to abstract common actions
 |  |    ComponentName.e2e.js                  # browser testing
-|  |    ComponentName.protractor.driver.js    # protractor public protractor driver to abstract common actions
+|  |    ComponentName.protractor.driver.js    # protractor public driver to abstract common actions
 |  |    README.md                             # (optional) additional information of the component
 |  |    README.TESTKIT.md                     # documention for the different driver methods
 |__stories
@@ -53,7 +53,7 @@ wix-style-react
 1. The documentation of every component. It uses the `.story` convention in order to apply automated documentation tool.
 1. Read the [Component Documentation section](./DOCUMENTING_COMPONENTS.md) for more information.
 
-## Common Files
+## Component Essentials
 Each component has also an "entry" in a few common files.
 ```
 wix-style-react
